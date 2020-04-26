@@ -1,0 +1,114 @@
+{
+  "name": "dataview",
+  "version": "1.0.0",
+  "private": false,
+  "author": "aniu2017",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
+  "keywords": [
+    "Component",
+    "UI",
+    "chart",
+    "React"
+  ],
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "@antv/g2": "^4.0.7"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "scripts": {
+    "start": "react-scripts start --EXTEND_ESLINT",
+    "clear": "rimraf ./lib",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 0",
+    "build": "npm run clear && npm run build-ts && npm run build-css && npm run build-module-css",
+    "test": "react-scripts test",
+    "test:nowatch": "cross-env CI=true react-scripts test",
+    "eject": "react-scripts eject",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "node-sass ./src/styles/index.scss ./lib/index.css",
+    "build-module-css": "node-sass -r ./src/components -o ./lib/components",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ],
+    "settings": {
+      "react": {
+        "pragma": "React",
+        "version": "detect"
+      }
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": false,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "tabWidth": 2,
+    "useTabs": false,
+    "endOfLine": "auto"
+  },
+  "devDependencies": {
+    "@antv/g2": "^4.0.7",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/preset-create-react-app": "^2.1.1",
+    "@storybook/react": "^5.3.18",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.36",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/storybook__addon-info": "^5.2.1",
+    "cross-env": "^7.0.2",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "jest-canvas-mock": "^2.2.0",
+    "node-sass": "^4.13.1",
+    "prettier": "2.0.4",
+    "react": ">=16.8.0",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "react-dom": ">=16.8.0",
+    "react-scripts": "3.4.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "typescript": "^3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
+  }
+}

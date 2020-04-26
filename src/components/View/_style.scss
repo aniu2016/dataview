@@ -1,0 +1,19 @@
+.dataview__view {
+  background: $white;
+  padding: $view-padding-y $view-padding-x;
+  box-shadow: $shadow-2-down;
+  text-align: left;
+
+  &.inline-block {
+    @include inline-block();
+  }
+
+  .dataview__view__title__left {
+    color: $gray-900;
+  }
+
+  .dataview__view__main,
+  .dataview__view__header {
+    margin-top: $view-padding-y;
+  }
+}
